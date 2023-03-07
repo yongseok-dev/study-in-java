@@ -1,6 +1,6 @@
 package basic_algorithm;
 
-public class Multi99Table {
+public class Plus99Table {
     public static void main(String[] args) {
         int[] numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9};
         System.out.print("  | ");
@@ -11,7 +11,7 @@ public class Multi99Table {
         for (int i : numbers) {
             System.out.print("\n" + i + " | ");
             for (int j : numbers) {
-                System.out.print((j * i > 9 ? j * i : ((j * i) + " ")) + " ");
+                System.out.print((j + i > 9 ? j + i : ((j + i) + " ")) + " ");
 
             }
         }

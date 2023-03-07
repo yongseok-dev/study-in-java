@@ -2,24 +2,29 @@ package basic_algorithm;
 
 import java.util.Scanner;
 
-public class Min3 {
+public class Min4 {
     public static void main(String[] args) {
         test();
         Scanner sn = new Scanner(System.in);
-        System.out.println("정수를 3개 입력해 주세요.");
+        System.out.println("정수를 4개 입력해 주세요.");
         int a = sn.nextInt();
         int b = sn.nextInt();
         int c = sn.nextInt();
-        int min = min3(a,b,c);
+        int d = sn.nextInt();
+        int min = min4(a,b,c,d);
         System.out.println("입력한 정수의 최솟값은 "+min+"입니다.");
     }
-    static int min3(int a, int b, int c){
-        return a>b?b<c?b:c:a<c?a:c;
+    static int min4(int a, int b, int c, int d){
+        if(a>b) a=b;
+        if(a>c) a=c;
+        if(a>d) a=d;
+        return a;
     }
     static void test(){
-        System.out.println(min3(1,2,3));
-        System.out.println(min3(2,1,4));
-        System.out.println(min3(3,4,1));
-        System.out.println(min3(4,1,2));
+        //test_code
+        System.out.println(min4(1,2,3,4));
+        System.out.println(min4(2,3,4,1));
+        System.out.println(min4(3,4,1,2));
+        System.out.println(min4(4,3,2,1));
     }
 }

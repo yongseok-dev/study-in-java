@@ -2,7 +2,7 @@ package basic_algorithm;
 
 import java.util.Scanner;
 
-public class Diff {
+public class Difference {
     public static void main(String[] args) {
         Scanner sn = new Scanner(System.in);
         int a, b;
