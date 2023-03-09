@@ -17,7 +17,8 @@ public class Player {
 		System.out.print(name + "> ");
 		String usertype;
 		usertype = sc.nextLine().toUpperCase();
-		int row = Integer.parseInt(usertype.replaceAll("[^0-9]", ""));
+		int row = Integer
+				.parseInt("".equals(usertype.replaceAll("[^0-9]", "")) ? "-1" : usertype.replaceAll("[^0-9]", ""));
 		int col = Character.getNumericValue(usertype.replaceAll("[^A-Z]", "").charAt(0))
 				- Character.getNumericValue('A');
 		position[0] = row;

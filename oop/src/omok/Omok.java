@@ -10,12 +10,18 @@ public class Omok {
 
 	private static void play(Board board, Player userA, Player userB) {
 		int turn = 0;
+
 		do {
-			Player player = turn%2==0?userA:userB;
+			Player player = turn % 2 == 0 ? userA : userB;
 			board.print();
 			int[] userType = player.type();
-			board.setStone(userType, player.stone);
-			turn++;
+			if (board.setStone(userType, player.stone)) {
+				turn++;
+				if (board.checkVictory(userType, player.stone)) {
+					System.out.println(player.stone + "승! 게임 종료");
+					break;
+				}
+			}
 		} while (true);
 
 	}
