@@ -9,11 +9,13 @@ public class Omok {
 	}
 
 	private static void play(Board board, Player userA, Player userB) {
+		int turn = 0;
 		do {
+			Player player = turn%2==0?userA:userB;
 			board.print();
-			int[] userType = userA.type();
-			System.out.println("" + userType[0] + userType[1]);
-			board.setStone(userType, userA.stone);
+			int[] userType = player.type();
+			board.setStone(userType, player.stone);
+			turn++;
 		} while (true);
 
 	}
