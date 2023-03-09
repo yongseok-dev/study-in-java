@@ -35,6 +35,13 @@ public class Account {
 		return used;
 	}
 
+	//setter
+	public void setBalance(int balance) {
+		if (MIN_BALANCE <= this.balance && this.balance <= MAX_BALANCE && MIN_BALANCE <= balance
+				&& balance <= MAX_BALANCE) {
+			this.balance = balance;
+		}
+	}
 	// 예금
 	public void setInBalance(int balance) {
 		if (MIN_BALANCE <= this.balance && this.balance <= MAX_BALANCE && MIN_BALANCE <= balance

@@ -1,14 +1,16 @@
 package ch06.check.exam18;
 
 public class ShopService {
-	//field
+	// field
 	private static ShopService singleton = new ShopService();
-	//constructor
+
+	// constructor
 	private ShopService() {
-		
+
 	}
-	//get
-	static public ShopService instance() {
+
+	// get
+	static public ShopService getInstance() {
 		return singleton;
 	}
 }

@@ -25,12 +25,18 @@ public class BankApplication {
 				System.out.println("-------------");
 				System.out.println("계좌생성");
 				System.out.println("-------------");
-				System.out.print("계좌번호> ");
-				String accountNumber = sc.nextLine();
+				String accountNumber;
+				int checkedId;
+				do {
+					System.out.print("계좌번호> ");
+					accountNumber = sc.nextLine();
+					checkedId = checkAccountId(accountNumber);
+				} while (checkedId != -1);
+
 				System.out.print("계좌주> ");
 				String name = sc.nextLine();
 				int balance = userIntegerInput("초기입금");
-				
+
 				account[accountId] = new Account(accountId, name, accountNumber, balance);
 				if (!account[accountId].isUsed()) {
 					System.out.println("결과: 계좌가 생성에 실패하였습니다.");
@@ -47,7 +53,7 @@ public class BankApplication {
 					System.out.println("등록된 계좌가 없습니다.");
 					continue;
 				}
-				
+
 				for (int i = 0; i < accountId; i++) {
 					if (account[i].isUsed()) {
 						System.out.println(account[i].getAccountNumber() + "	" + account[i].getBalance() + "	"
@@ -65,9 +71,11 @@ public class BankApplication {
 					System.out.println("등록된 계좌가 없습니다.");
 					continue;
 				}
-				int balance = userIntegerInput("예금");
-				
-				account[id].setInBalance(balance);
+//				int balance = userIntegerInput("예금");
+//				account[id].setInBalance(balance);
+
+				int balance = userIntegerInput("예금") + account[id].getBalance();
+				account[id].setBalance(balance);
 
 			} else if (4 == select) {
 				System.out.println("-------------");
@@ -79,9 +87,11 @@ public class BankApplication {
 					System.out.println("등록된 계좌가 없습니다.");
 					continue;
 				}
-				int balance = userIntegerInput("출금");
-				
-				account[id].setOutBalance(balance);
+//				int balance = userIntegerInput("출금");
+//				account[id].setOutBalance(balance);
+
+				int balance = -userIntegerInput("출금") + account[id].getBalance();
+				account[id].setBalance(balance);
 
 			}
 		} while (select != 5);
@@ -93,6 +103,17 @@ public class BankApplication {
 		System.out.println("1.계좌생성 | 2.계좌목록 | 3.예금 | 4.출금 | 5.종료");
 		System.out.println("--------------------------------------------------");
 		System.out.print("선택> ");
+	}
+
+	private static int checkAccountId(String accountNumber) {
+		int id = -1;
+		for (int i = 0; i < accountId; i++) {
+			if (account[i].getAccountNumber().equals(accountNumber)) {
+				id = i;
+				break;
+			}
+		}
+		return id;
 	}
 
 	private static int findAccountId() {
