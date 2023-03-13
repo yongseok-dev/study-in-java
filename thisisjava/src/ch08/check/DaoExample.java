@@ -1,4 +1,4 @@
-package ch07.check;
+package ch08.check;
 
 public class DaoExample {
 	public static void dbWork(DataAccessObject dao) {

@@ -1,4 +1,4 @@
-package ch07.sec08;
+package ch08.sec08;
 
 public class MultiInterfaceImplExample {
 	public static void main(String[] args) {

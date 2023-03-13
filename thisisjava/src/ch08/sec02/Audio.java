@@ -1,4 +1,4 @@
-package ch07.sec02;
+package ch08.sec02;
 
 public class Audio implements RemoteControl{
 	@Override

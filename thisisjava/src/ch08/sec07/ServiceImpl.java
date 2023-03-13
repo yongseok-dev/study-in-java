@@ -1,4 +1,4 @@
-package ch07.sec07;
+package ch08.sec07;
 
 public class ServiceImpl implements Service {
 

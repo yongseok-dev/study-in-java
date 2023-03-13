@@ -1,4 +1,4 @@
-package ch07.sec10.exam02;
+package ch08.sec10.exam02;
 
 public class CastingExample {
 	public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package ch07.sec06;
+package ch08.sec06;
 
 public class RemoteControlExample {
 	public static void main(String[] args) {

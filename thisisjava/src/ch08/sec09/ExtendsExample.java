@@ -1,4 +1,4 @@
-package ch07.sec09;
+package ch08.sec09;
 
 public class ExtendsExample {
 	public static void main(String[] args) {

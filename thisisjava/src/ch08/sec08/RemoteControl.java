@@ -1,4 +1,4 @@
-package ch07.sec08;
+package ch08.sec08;
 
 public interface RemoteControl {
 	void turnOn();//추상메소드

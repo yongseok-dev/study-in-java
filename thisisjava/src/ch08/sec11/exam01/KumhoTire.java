@@ -1,4 +1,4 @@
-package ch07.sec11.exam01;
+package ch08.sec11.exam01;
 
 public class KumhoTire implements Tire {
 	@Override
