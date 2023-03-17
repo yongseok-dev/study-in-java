@@ -71,3 +71,6 @@ bin
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,elisp,java
+
+# env
+*.env
