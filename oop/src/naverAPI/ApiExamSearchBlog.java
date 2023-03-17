@@ -19,23 +19,24 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class ApiExamSearchBlog {
+	final static String USER_TYPE_MSG = "영화를 검색해 보세요!\n >";
 
 	public static void main(String[] args) {
 		Properties properties = new Properties();
 		try {
-			properties.load(ApiExamSearchBlog.class.getResourceAsStream(".env"));			
+			properties.load(ApiExamSearchBlog.class.getResourceAsStream(".env"));
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
 		}
 		String clientId = properties.getProperty("clientId"); // 애플리케이션 클라이언트 아이디
 		String clientSecret = properties.getProperty("clientSecret"); // 애플리케이션 클라이언트 시크릿
-		System.out.println(clientId);
 		Scanner sc = new Scanner(System.in);
 		String text = null;
 		do {
-			System.out.println("영화를 검색해 보세요!\n>");
+			System.out.print(USER_TYPE_MSG);
 			text = sc.nextLine();
 		} while ("".equals(text));
-		
+
 		try {
 			text = URLEncoder.encode(text, "UTF-8");
 		} catch (UnsupportedEncodingException e) {
@@ -49,18 +50,26 @@ public class ApiExamSearchBlog {
 		requestHeaders.put("X-Naver-Client-Secret", clientSecret);
 		String responseBody = get(apiURL, requestHeaders);
 
+		output(responseBody);
+	}
+
+	private static void output(String responseBody) {
 		JSONObject root = new JSONObject(responseBody);
 		JSONArray items = root.getJSONArray("items");
-		
-		System.out.println("검색결과: "+root.getInt("total")+"개 중 "+root.getInt("display")+"개 결과 입니다.");
-		
+
+		int total = root.getInt("total");
+		int display = root.getInt("display");
+		System.out.printf("검색결과: %d개 중 %d개 결과 입니다.\n", total, display);
+
 		for (int i = 0; i < items.length(); i++) {
-			JSONObject item = new JSONObject(items.get(i).toString());
-			System.out.println(i+1+". "+item.getString("title").replaceAll("<[^>]*>", ""));
-			System.out.println(" - 링크: "+item.getString("link"));
-			System.out.println(" - 이미지: "+item.getString("image")+"\n");
+			JSONObject item = items.getJSONObject(i);
+			String title = item.getString("title").replaceAll("<[^>]*>", "");
+			String link = item.getString("link");
+			String image = item.getString("image");
+
+			System.out.printf("%d. %s\n - 링크: %s\n - 이미지: %s\n\n", i + 1, title, link, image);
 		}
-		
+
 		System.out.println("\n이상 검색 결과 입니다");
 	}
 
