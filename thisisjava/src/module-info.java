@@ -5,4 +5,5 @@ module thisisjava{
 	requires test;
 	requires my.lib;
 	requires lombok;
+	requires org.json;
 }
