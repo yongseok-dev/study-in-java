@@ -6,4 +6,5 @@ module thisisjava{
 	requires my.lib;
 	requires lombok;
 	requires org.json;
+	requires ojdbc10;
 }
