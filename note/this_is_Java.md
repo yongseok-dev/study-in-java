@@ -12,23 +12,23 @@
 - `if`, `switch`, `for`, `while` 
 - `break`, `continue`
 ## Part2. 객체 지향 프로그래밍
-### 05 참조 타입
-### 06 클래스
-### 07 상속
-### 08 인터페이스
-### 09 중첩 선언과 익명 객체
-### 10 라이브러리와 모듈
-### 11 예외처리
+### 05 [참조 타입](../this_is_java/note/ch05)
+### 06 [클래스](../this_is_java/note/ch06)
+### 07 [상속](../this_is_java/note/ch07)
+### 08 [인터페이스](../this_is_java/note/ch08)
+### 09 [중첩 선언과 익명 객체](../this_is_java/note/ch09)
+### 10 [라이브러리와 모듈](../this_is_java/note/ch10)
+### 11 [예외처리](../this_is_java/note/ch11)
 
 ## Part3. 라이브러리 활용
-### 12 java.base 모듈
-### 13 제네릭
-### 14 멀티 스레드
-### 15 컬렉션 자료구조
-### 16 람다식
-### 17 스트림 요소 처리
+### 12 [java.base 모듈](../this_is_java/note/ch12)
+### 13 [제네릭](../this_is_java/note/ch13)
+### 14 [멀티 스레드](../this_is_java/note/ch14)
+### 15 [컬렉션 자료구조](../this_is_java/note/ch15)
+### 16 [람다식](../this_is_java/note/ch16)
+### 17 [스트림 요소 처리](../this_is_java/note/ch17)
 
 ## Part4. 데이터 입출력
-### 18 데이터 입출력
-### 19 네트워크 입출력
-### 20 데이터베이스 입출력 
+### 18 [데이터 입출력](../this_is.java/note/ch18)
+### 19 [네트워크 입출력](../this_is.java/note/ch19)
+### 20 [데이터베이스 입출력](../this_is.java/note/ch20) 
