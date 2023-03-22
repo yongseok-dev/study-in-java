@@ -34,12 +34,13 @@ public class userTypeInteger {
 	static public int full(String str) {
 		Scanner sc = new Scanner(System.in);
 		int n = 0;
-			System.out.print(str);
-			try {
-				n = Integer.parseInt(sc.nextLine());				
-			} catch (Exception e) {
-				n = full(str);				
-			}
+		System.out.print(str);
+		try {
+			n = Integer.parseInt(sc.nextLine());
+		} catch (Exception e) {
+			n = full(str);
+		}
 		return n;
 	}
+
 }
