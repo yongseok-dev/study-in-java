@@ -82,6 +82,7 @@ bin
 # servlet, jsp
 .metadata
 javaWeb/Servers/
+javaWeb/servlet/build/
 
 ### Maven ###
 target/
