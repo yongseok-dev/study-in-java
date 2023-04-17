@@ -17,6 +17,10 @@ gen
 # Undo-tree save-files
 *.~undo-tree
 
+.classpath
+.project
+.settings/
+
 ### Java ###
 # Compiled class file
 *.class
@@ -74,3 +78,26 @@ bin
 
 # env
 *.env
+
+# servlet, jsp
+.metadata
+javaWeb/Servers/
+
+### Maven ###
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+# https://github.com/takari/maven-wrapper#usage-without-binary-jar
+.mvn/wrapper/maven-wrapper.jar
+
+# Eclipse m2e generated files
+# Eclipse Core
+.project
+# JDT-specific (Eclipse Java Development Tools)
+.classpath
