@@ -1,5 +1,6 @@
 package pro07;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 
 import javax.servlet.ServletConfig;
@@ -8,6 +9,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.json.JSONObject;
 
 @WebServlet("/pro07/memberAction")
 public class MemberAction extends HttpServlet {
@@ -23,9 +26,27 @@ public class MemberAction extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+		String type = (request.getContentType());
 		MemberDAO dao = new MemberDAO();
-		String command = request.getParameter("command");
+		String command;
+		String removeEmail = "";
+		if("application/json".equals(type)) {
+			
+		    BufferedReader br = request.getReader();
+		    StringBuilder sb = new StringBuilder();
+		    String line = null;
+
+		    while ((line = br.readLine()) != null) {
+		        sb.append(line);
+		    }
+
+		    JSONObject jsonObj = new JSONObject(sb.toString());
+		    
+			command = jsonObj.get("command").toString();
+			removeEmail = jsonObj.get("email").toString();
+		}else {
+			command = request.getParameter("command");
+		}
 		System.out.println(command);
 		if(command != null && command.equals("addMember")) {
 			System.out.println(1);
@@ -39,6 +60,9 @@ public class MemberAction extends HttpServlet {
 			vo.setPwd(_pwd);
 			vo.setName(_name);
 			dao.addMember(vo);
+			response.sendRedirect("./search.html");
+		}else if(command != null && command.equals("removeMember")) {
+			dao.removeMember(removeEmail);
 		}
 		response.sendRedirect("./search.html");
 //		RequestDispatcher dis = request.getRequestDispatcher("/pro07/search.html");

@@ -40,22 +40,15 @@ public class MemberDAO {
 			return false;
 		}
 	}
-	public boolean removeMember(MemberVO memberVo) {
+
+	public boolean removeMember(String email) {
 		try {
 			DB.connection();
 			con = DB.getDataFactory().getConnection();
-			String id = memberVo.getId();
-			String pwd = memberVo.getPwd();
-			String name = memberVo.getName();
-			String email = memberVo.getEmail();
-
-			String query = "INSERT INTO MEMBER (id,pw,name,email) values(?,?,?,?)";
+			String query = "DELETE MEMBER WHERE email=?";
 			System.out.println(query);
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, id);
-			pstmt.setString(2, pwd);
-			pstmt.setString(3, name);
-			pstmt.setString(4, email);
+			pstmt.setString(1, email);
 			pstmt.executeUpdate();
 			pstmt.close();
 			con.close();

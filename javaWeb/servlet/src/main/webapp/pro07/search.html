@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://unpkg.com/mvp.css" />
     <title>검색실습</title>
     <style>
       table,
@@ -14,12 +15,22 @@
     </style>
   </head>
   <body>
-    <input id="key" name="keyword" type="text" value="" />
-    <input type="submit" value="검색" onclick="getMember()" />
+    <main>
+      <section>
+        <div id="table"></div>
+      </section>
+      <section>
+        <input id="key" name="keyword" type="text" value="" />
+        <input type="submit" value="검색" onclick="getMember()" />
+      </section>
+      <section>
+        <a href="./memberForm.html">회원가입</a>
+      </section>
+    </main>
     <script>
       const getMember = () => {
-        if(document.querySelector("table")){
-        	document.querySelector("table").remove();
+        if (document.querySelector("#table table")) {
+          document.querySelector("#table table").remove();
         }
         const keyword = document.querySelector("#key").value;
         fetch("./member?type=json&keyword=" + keyword)
@@ -34,6 +45,8 @@
             idHeader.textContent = "ID";
             const emailHeader = document.createElement("th");
             emailHeader.textContent = "Email";
+            const removeHeader = document.createElement("th");
+            removeHeader.textContent = "삭제";
 
             headerRow.appendChild(nameHeader);
             headerRow.appendChild(idHeader);
@@ -52,18 +65,34 @@
               const emailCell = document.createElement("td");
               emailCell.textContent = item.email;
 
+              const removeCell = document.createElement("td");
+              removeCell.innerHTML = `<button onclick="removeMember('${item.email}')">삭제</button>`;
+
               row.appendChild(nameCell);
               row.appendChild(idCell);
               row.appendChild(emailCell);
+              row.appendChild(removeCell);
 
               table.appendChild(row);
             });
 
-            document.body.appendChild(table);
+            document.querySelector("#table").appendChild(table);
           })
           .catch((error) => console.error(error));
       };
       getMember();
+      const removeMember = (email) => {
+        fetch("./memberAction", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ command: "removeMember", email }),
+        })
+          .then((response) => response.json())
+          .then((data) => console.log(data))
+          .catch((error) => console.error(error));
+      };
     </script>
   </body>
 </html>
