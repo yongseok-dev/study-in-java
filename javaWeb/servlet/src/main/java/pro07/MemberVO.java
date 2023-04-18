@@ -9,7 +9,7 @@ public class MemberVO {
 		private String email;
 		private Date joinDate;
 	public MemberVO(){
-		System.out.println("생성자 호출");
+		System.out.println("call VO");
 		
 		
 	}
