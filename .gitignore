@@ -83,7 +83,7 @@ bin
 .metadata
 javaWeb/Servers/
 javaWeb/servlet/build/
-javaWeb/servlet/src/main/java/common/DB.java
+# javaWeb/servlet/src/main/java/common/DB.java #DataSource 등록
 
 ### Maven ###
 target/

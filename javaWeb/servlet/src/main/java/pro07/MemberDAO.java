@@ -16,8 +16,8 @@ public class MemberDAO {
 		List<MemberVO> list = new ArrayList<MemberVO>();
 		try {
 			common.DB DB = new common.DB();
-			DB.connDB();;
-			con = DB.getConnection();
+			DB.connection();
+			con = DB.getDataFactory().getConnection();
 			stmt = con.createStatement();
 			String query = "SELECT * FROM MEMBER ";
 			if(keyword!=null&&!"".equals(keyword)) {
