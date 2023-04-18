@@ -22,7 +22,7 @@
         	document.querySelector("table").remove();
         }
         const keyword = document.querySelector("#key").value;
-        fetch("./memberJSON?keyword=" + keyword)
+        fetch("./member?type=json&keyword=" + keyword)
           .then((response) => response.json())
           .then((data) => {
             // 데이터를 받아와서 처리합니다.
