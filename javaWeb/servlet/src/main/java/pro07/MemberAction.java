@@ -26,29 +26,30 @@ public class MemberAction extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		String type = (request.getContentType());
 		MemberDAO dao = new MemberDAO();
 		String command;
 		String removeEmail = "";
-		if("application/json".equals(type)) {
-			
-		    BufferedReader br = request.getReader();
-		    StringBuilder sb = new StringBuilder();
-		    String line = null;
+		if ("application/json".equals(type)) {
 
-		    while ((line = br.readLine()) != null) {
-		        sb.append(line);
-		    }
+			BufferedReader br = request.getReader();
+			StringBuilder sb = new StringBuilder();
+			String line = null;
 
-		    JSONObject jsonObj = new JSONObject(sb.toString());
-		    
+			while ((line = br.readLine()) != null) {
+				sb.append(line);
+			}
+
+			JSONObject jsonObj = new JSONObject(sb.toString());
+
 			command = jsonObj.get("command").toString();
 			removeEmail = jsonObj.get("email").toString();
-		}else {
+		} else {
 			command = request.getParameter("command");
 		}
 		System.out.println(command);
-		if(command != null && command.equals("addMember")) {
+		if (command != null && command.equals("addMember")) {
 			System.out.println(1);
 			String _id = request.getParameter("userId");
 			String _pwd = request.getParameter("userPassword");
@@ -61,10 +62,10 @@ public class MemberAction extends HttpServlet {
 			vo.setName(_name);
 			dao.addMember(vo);
 			response.sendRedirect("./search.html");
-		}else if(command != null && command.equals("removeMember")) {
+		} else if (command != null && command.equals("removeMember")) {
 			dao.removeMember(removeEmail);
+//			response.sendRedirect("./search.html");
 		}
-		response.sendRedirect("./search.html");
 //		RequestDispatcher dis = request.getRequestDispatcher("/pro07/search.html");
 //		dis.forward(request, response);
 	}
